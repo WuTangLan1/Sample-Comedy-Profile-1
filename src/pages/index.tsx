@@ -1,114 +1,144 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+// src\pages\index.tsx
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { useRef } from "react";
+import { motion } from "framer-motion";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const Home = () => {
+  const aboutRef = useRef<HTMLElement | null>(null);
+  const clipsRef = useRef<HTMLElement | null>(null);
+  const eventsRef = useRef<HTMLElement | null>(null);
 
-export default function Home() {
+  // Function to scroll smoothly to a section
+  const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="scroll-smooth">
+      {/* Header with Navigation */}
+      <header className="fixed top-0 w-full bg-white shadow z-50">
+        <nav className="container mx-auto flex justify-between items-center py-4 px-6">
+          <div className="text-2xl font-bold">ComedySite</div>
+          <ul className="flex space-x-6">
+            <li>
+              <button
+                onClick={() => scrollToSection(aboutRef)}
+                className="hover:text-blue-500 transition duration-300 focus:outline-none"
+              >
+                About Me
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(clipsRef)}
+                className="hover:text-blue-500 transition duration-300 focus:outline-none"
+              >
+                Some Clips
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(eventsRef)}
+                className="hover:text-blue-500 transition duration-300 focus:outline-none"
+              >
+                Upcoming Events
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Main Content */}
+      <main className="pt-20">
+        {/* About Me Section */}
+        <section
+          ref={aboutRef}
+          id="about"
+          className="min-h-screen flex items-center justify-center bg-gray-100"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="container mx-auto p-8 text-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h2 className="text-4xl font-bold mb-4">About Me</h2>
+            <p className="text-lg">
+              I am an emerging comedian passionate about bringing laughter
+              wherever I go. From intimate gigs to large events, I strive to
+              create moments that connect and inspire joy.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Some Clips Section */}
+        <section
+          ref={clipsRef}
+          id="clips"
+          className="min-h-screen flex items-center justify-center bg-white"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="container mx-auto p-8 text-center"
           >
-            Read our docs
-          </a>
-        </div>
+            <h2 className="text-4xl font-bold mb-4">Some Clips</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gray-200 p-4 rounded shadow">
+                <h3 className="font-semibold">Clip 1</h3>
+                <p>A hilarious moment on stage that left the audience in stitches.</p>
+              </div>
+              <div className="bg-gray-200 p-4 rounded shadow">
+                <h3 className="font-semibold">Clip 2</h3>
+                <p>Behind the scenes fun with a sneak peek into my creative process.</p>
+              </div>
+              <div className="bg-gray-200 p-4 rounded shadow">
+                <h3 className="font-semibold">Clip 3</h3>
+                <p>A quick skit showcasing my signature style and humor.</p>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Upcoming Events Section */}
+        <section
+          ref={eventsRef}
+          id="events"
+          className="min-h-screen flex items-center justify-center bg-gray-100"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="container mx-auto p-8 text-center"
+          >
+            <h2 className="text-4xl font-bold mb-4">Upcoming Events</h2>
+            <ul className="space-y-4">
+              <li className="bg-white p-4 shadow rounded">
+                <h3 className="text-2xl font-semibold">Live Stand-Up Night</h3>
+                <p>Date: June 25, 2025</p>
+                <p>Location: Downtown Comedy Club</p>
+              </li>
+              <li className="bg-white p-4 shadow rounded">
+                <h3 className="text-2xl font-semibold">Comedy Workshop</h3>
+                <p>Date: July 10, 2025</p>
+                <p>Location: City Arts Center</p>
+              </li>
+              <li className="bg-white p-4 shadow rounded">
+                <h3 className="text-2xl font-semibold">Open Mic Evening</h3>
+                <p>Date: August 5, 2025</p>
+                <p>Location: The Laugh Lounge</p>
+              </li>
+            </ul>
+          </motion.div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
-}
+};
+
+export default Home;
