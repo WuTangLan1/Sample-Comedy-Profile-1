@@ -8,21 +8,33 @@ interface AnimatedImageProps {
 }
 
 const imageVariants = {
-  hidden: { scale: 0.5 },
-  visible: { scale: 1, transition: { duration: 0.8, ease: "easeInOut" } }
+  hidden: { scale: 0.8, opacity: 0.8 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
 };
 
 const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { amount: 1.0, once: false });
+  const inView = useInView(ref, { 
+    margin: "0px 0px -50px 0px",
+    amount: 0.6,
+    once: false
+  });
   const controls = useAnimation();
+  
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    controls.start(inView ? "visible" : "hidden");
   }, [inView, controls]);
+
   return (
     <motion.img
       ref={ref}
@@ -32,6 +44,7 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) =>
       initial="hidden"
       animate={controls}
       variants={imageVariants}
+      exit="hidden"
     />
   );
 };
@@ -51,7 +64,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
           </p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
+      <motion.div initial={{ opacity: 5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/event_photos/event1.png" alt="Event 1" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
@@ -62,7 +75,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
           </p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row-reverse items-center">
+      <motion.div initial={{ opacity: 5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row-reverse items-center">
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/event_photos/event2.png" alt="Event 2" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
@@ -73,7 +86,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
           </p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
+      <motion.div initial={{ opacity: 5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/profile_photos/profile1.png" alt="Profile" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
