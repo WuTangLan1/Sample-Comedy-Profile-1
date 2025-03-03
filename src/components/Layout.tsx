@@ -23,7 +23,10 @@ const Layout = ({ children }: LayoutProps) => {
           setActiveSection(entry.target.id);
         }
       });
-    }, { threshold: 0.5 });
+    }, { 
+        threshold: 0.3,
+        rootMargin: '-25% 0px -25% 0px'
+     });
 
     const refs = [
       { ref: aboutRef, id: 'about' },
