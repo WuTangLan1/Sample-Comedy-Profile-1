@@ -1,5 +1,6 @@
 // src/pages/index.tsx
 import { useRef } from "react";
+import { UserIcon, VideoCameraIcon, CalendarIcon } from "@heroicons/react/outline";
 import AboutSection from "../components/AboutSection";
 import ClipsSection from "../components/ClipsSection";
 import EventsSection from "../components/EventsSection";
@@ -20,18 +21,21 @@ const Home = () => {
           </div>
           <ul className="flex space-x-6">
             <li>
-              <button onClick={() => scrollToSection(aboutRef)} className="text-lg font-medium text-white transition duration-300 focus:outline-none">
-                About Me
+              <button onClick={() => scrollToSection(aboutRef)} className="flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none">
+                <UserIcon className="h-6 w-6" />
+                <span className="hidden sm:inline">About Me</span>
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection(clipsRef)} className="text-lg font-medium text-white transition duration-300 focus:outline-none">
-                Some Clips
+              <button onClick={() => scrollToSection(clipsRef)} className="flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none">
+                <VideoCameraIcon className="h-6 w-6" />
+                <span className="hidden sm:inline">Some Clips</span>
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection(eventsRef)} className="text-lg font-medium text-white transition duration-300 focus:outline-none">
-                Upcoming Events
+              <button onClick={() => scrollToSection(eventsRef)} className="flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none">
+                <CalendarIcon className="h-6 w-6" />
+                <span className="hidden sm:inline">Upcoming Events</span>
               </button>
             </li>
           </ul>

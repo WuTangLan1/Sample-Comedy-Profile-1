@@ -1,11 +1,10 @@
 // src/components/EventsSection.tsx
 import { forwardRef } from "react";
-import { motion } from "framer-motion";
 const EventsSection = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section ref={ref} id="events" className="min-h-screen relative flex items-center justify-center bg-black bg-[url('/images/backgrounds/eventsbg.svg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black opacity-60"></div>
-      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="relative container mx-auto p-8 text-center bg-black/50 rounded-xl shadow-2xl">
+      <div className="relative container mx-auto p-8 text-center bg-black/50 rounded-xl shadow-2xl max-w-full">
         <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white">Upcoming Events</h2>
         <ul className="space-y-6">
           <li className="bg-black/40 p-6 rounded-xl shadow-md">
@@ -24,7 +23,7 @@ const EventsSection = forwardRef<HTMLElement>((_, ref) => {
             <p className="text-xl text-white">Location: The Laugh Lounge</p>
           </li>
         </ul>
-      </motion.div>
+      </div>
     </section>
   );
 });
