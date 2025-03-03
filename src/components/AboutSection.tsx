@@ -9,20 +9,20 @@ interface AnimatedImageProps {
 
 const imageVariants = {
   hidden: { 
-    scale: 0.92,  // Reduced initial scale for subtler entry
-    opacity: 0.5, // Lower initial opacity for better fade
-    filter: "blur(8px)" // Subtle blur for depth perception
+    scale: 0.35,
+    opacity: 0.5,
+    filter: "blur(8px)"
   },
   visible: { 
-    scale: 1, 
+    scale: 0.75,
     opacity: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 0.8, // Slightly longer duration
-      ease: [0.33, 1, 0.68, 1], // Smooth ease-in-out curve
+      duration: 0.8,
+      ease: [0.33, 1, 0.68, 1],
       scale: {
         type: "spring",
-        stiffness: 150, // Smoother spring parameters
+        stiffness: 150,
         damping: 20,
         mass: 0.5
       }
