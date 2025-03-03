@@ -8,8 +8,13 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
   activeSection: string | null;
 }) => {
   const scrollToSection = (ref: React.RefObject<HTMLElement | null>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({ behavior: "smooth", block: 'start' });
   };
+
+  const createLinkClass = (sectionId: string) => 
+    `relative group flex items-center space-x-2 text-lg font-medium text-white transition-colors duration-300 focus:outline-none ${
+      activeSection === sectionId ? 'text-red-400' : 'hover:text-red-300'
+    }`;
 
   return (
     <header className="fixed top-0 w-full backdrop-filter backdrop-blur-lg bg-black/30 shadow-lg z-50">
@@ -22,31 +27,37 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
           <li>
             <button 
               onClick={() => scrollToSection(aboutRef)}
-              className="relative group flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none"
+              className={createLinkClass('about')}
             >
               <UserIcon className="h-6 w-6" />
               <span className="hidden sm:inline">About Me</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'about' ? '!w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
+                activeSection === 'about' ? '!w-full' : 'w-0 group-hover:w-full'
+              }`}></div>
             </button>
           </li>
           <li>
             <button
               onClick={() => scrollToSection(clipsRef)}
-              className="relative group flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none"
+              className={createLinkClass('clips')}
             >
               <VideoCameraIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Some Clips</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'clips' ? '!w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
+                activeSection === 'clips' ? '!w-full' : 'w-0 group-hover:w-full'
+              }`}></div>
             </button>
           </li>
           <li>
             <button
               onClick={() => scrollToSection(eventsRef)}
-              className="relative group flex items-center space-x-2 text-lg font-medium text-white transition duration-300 focus:outline-none"
+              className={createLinkClass('events')}
             >
               <CalendarIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Upcoming Events</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'events' ? '!w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
+                activeSection === 'events' ? '!w-full' : 'w-0 group-hover:w-full'
+              }`}></div>
             </button>
           </li>
         </ul>

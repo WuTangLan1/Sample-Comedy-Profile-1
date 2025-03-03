@@ -18,14 +18,20 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
+      let mostVisibleEntry: IntersectionObserverEntry | null = null;
+      
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+        if (entry.isIntersecting && (!mostVisibleEntry || entry.intersectionRatio > mostVisibleEntry.intersectionRatio)) {
+          mostVisibleEntry = entry;
         }
       });
+  
+      if (mostVisibleEntry?.isIntersecting) {
+        setActiveSection(mostVisibleEntry.target.id);
+      }
     }, { 
-      threshold: 0.5,
-      rootMargin: '-25% 0px -25% 0px'
+      threshold: [0.25, 0.5, 0.75],
+      rootMargin: '-25% 0px -55% 0px'
     });
 
     const refs = [

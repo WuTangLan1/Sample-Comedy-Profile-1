@@ -55,7 +55,7 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) =>
 };
 const AboutSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section ref={ref} id="about" className="min-h-screen pt-32 relative flex flex-col items-center bg-gray-100 bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/aboutbg.svg')] bg-cover bg-center">
+    <section ref={ref} className="min-h-screen pt-32 relative flex flex-col items-center bg-gray-100 bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/aboutbg.svg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <AboutMe />
       <motion.div initial={{ opacity: 0.5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">

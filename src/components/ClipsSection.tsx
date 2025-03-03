@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section ref={ref} id="clips" className="min-h-screen relative flex flex-col items-center justify-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/clipsbg.svg')] bg-cover bg-center">
+    <section ref={ref} className="min-h-screen relative flex flex-col items-center justify-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/clipsbg.svg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative container mx-auto p-8 bg-black/20 rounded-xl shadow-lg mt-10 w-full max-w-6xl">
         <div className="flex flex-col items-start text-left">
