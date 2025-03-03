@@ -8,24 +8,41 @@ interface AnimatedImageProps {
 }
 
 const imageVariants = {
-  hidden: { scale: 0.35, opacity: 0.5, filter: "blur(8px)" },
+  hidden: { 
+    scale: 0.35,
+    opacity: 0.5,
+    filter: "blur(8px)"
+  },
   visible: { 
-    scale: 0.75, 
-    opacity: 1, 
-    filter: "blur(0px)", 
+    scale: 0.75,
+    opacity: 1,
+    filter: "blur(0px)",
     transition: {
       duration: 0.8,
       ease: [0.33, 1, 0.68, 1],
-      scale: { type: "spring", stiffness: 150, damping: 20, mass: 0.5 }
+      scale: {
+        type: "spring",
+        stiffness: 150,
+        damping: 20,
+        mass: 0.5
+      }
     }
   }
 };
 
 const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { margin: "0px 0px -50px 0px", amount: 0.6, once: false });
+  const inView = useInView(ref, { 
+    margin: "0px 0px -50px 0px",
+    amount: 0.6,
+    once: false
+  });
   const controls = useAnimation();
-  useEffect(() => { controls.start(inView ? "visible" : "hidden"); }, [inView, controls]);
+  
+  useEffect(() => {
+    controls.start(inView ? "visible" : "hidden");
+  }, [inView, controls]);
+
   return (
     <motion.img
       ref={ref}
@@ -40,56 +57,49 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) =>
   );
 };
 
-const textVariants = {
-  hidden: { opacity: 0, width: 0, transition: { duration: 0.5 } },
-  visible: { opacity: 1, width: "100%", transition: { duration: 0.5 } }
-};
-
-const profileImageVariants = {
-  minimized: { scale: 1.2, transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] } },
-  maximized: { scale: 1, transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] } }
-};
-
 const AboutSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section ref={ref} id="about" className="min-h-screen pt-16 relative flex flex-col items-center justify-start bg-gray-100 bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/aboutbg.svg')] bg-cover bg-center">
+    <section ref={ref} id="about" className="min-h-screen pt-32 relative flex flex-col items-center bg-gray-100 bg-opacity-30 backdrop-filter backdrop-blur-md bg-[url('/images/backgrounds/aboutbg.svg')] bg-cover bg-center">
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="w-full max-w-screen-2xl mx-auto text-center px-8"
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+        className="relative w-full max-w-4xl mx-auto px-4 mb-16 z-10"
       >
-        <div className="container p-2 bg-white/20 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-center">
-          <AnimatePresence>
-            <motion.div
-              key="text"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              className="w-full md:w-1/2 p-4 text-center md:text-left"
-            >
-              <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white">About Me</h2>
-              <p className="text-xl font-medium text-white">
-                Ever since I was a child, I have been captivated by the magic of performance and the transformative power of laughter. My journey began with a deep-rooted passion for storytelling, and over the years, I have dedicated myself to honing my craft, connecting with audiences on a profound and personal level.
-              </p>
-            </motion.div>
-          </AnimatePresence>
+        <div className="bg-black/30 rounded-xl shadow-2xl backdrop-blur-lg p-8 flex flex-col md:flex-row items-center gap-8">
           <motion.div
-            variants={profileImageVariants}
-            animate="maximized"
-            className="w-full md:w-1/2 p-4 flex justify-center"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex-1 text-center md:text-left"
           >
-            <motion.img
+            <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-6 text-white">About Me</h2>
+            <p className="text-xl font-medium text-white leading-relaxed">
+              Ever since I was a child, I have been captivated by the magic of performance and the transformative power of laughter. My journey began with a deep-rooted passion for storytelling, and over the years, I have dedicated myself to honing my craft, connecting with audiences on a profound and personal level.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            className="flex-shrink-0"
+          >
+            <img
               src="/images/profile_photos/profile5.png"
               alt="Profile"
-              className="w-64 h-64 object-cover rounded-full border-4 border-white shadow-xl"
+              className="w-72 h-72 object-cover rounded-full border-4 border-white shadow-xl"
             />
           </motion.div>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0.5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
+
+      <motion.div
+        initial={{ opacity: 0.5, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center"
+      >
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/event_photos/event1.png" alt="Event 1" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
@@ -100,7 +110,13 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
           </p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0.5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row-reverse items-center">
+
+      <motion.div
+        initial={{ opacity: 0.5, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row-reverse items-center"
+      >
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/event_photos/event2.png" alt="Event 2" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
@@ -111,7 +127,13 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
           </p>
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0.5, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }} className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
+
+      <motion.div
+        initial={{ opacity: 0.5, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="relative container mx-auto p-8 mt-12 bg-black/30 rounded-xl shadow-2xl flex flex-col md:flex-row items-center"
+      >
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/profile_photos/profile1.png" alt="Profile" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
