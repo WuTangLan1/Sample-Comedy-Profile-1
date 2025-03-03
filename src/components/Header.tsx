@@ -16,7 +16,7 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="flex items-center space-x-4">
           <img src="/images/profile_photos/profile5.png" alt="Profile" className="w-12 h-12 rounded-full border-2 border-white" />
-          <div className="text-3xl font-bold font-[PlayfairDisplay] text-white">Comedian Name</div>
+          <div className="text-xl sm:text-3xl font-bold font-[PlayfairDisplay] text-white">Citizen Kane</div>
         </div>
         <ul className="flex space-x-6">
           <li>
@@ -26,7 +26,7 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <UserIcon className="h-6 w-6" />
               <span className="hidden sm:inline">About Me</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'about' ? 'w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'about' ? '!w-full' : 'group-hover:w-full'}`}></div>
             </button>
           </li>
           <li>
@@ -36,7 +36,7 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <VideoCameraIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Some Clips</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'clips' ? 'w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'clips' ? '!w-full' : 'group-hover:w-full'}`}></div>
             </button>
           </li>
           <li>
@@ -46,7 +46,7 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <CalendarIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Upcoming Events</span>
-              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'events' ? 'w-full' : 'group-hover:w-full'}`}></div>
+              <div className={`absolute -bottom-1 left-0 w-0 h-1 bg-red-500 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_0_8px_2px_rgba(239,68,68,0.3)] ${activeSection === 'events' ? '!w-full' : 'group-hover:w-full'}`}></div>
             </button>
           </li>
         </ul>
