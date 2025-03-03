@@ -11,7 +11,6 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <p className="text-white text-lg mb-4">An unforgettable night filled with laughter and unexpected twists.</p>
           <div className="flex justify-center w-full">
             <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md border-4 border-white" poster="/images/posters/event1.jpg">
-              <source src="/videos/promovid1.webm" type="video/webm" />
               <source src="/videos/promovid1.mp4" type="video/mp4" />
               <source src="/videos/promovid1.ogv" type="video/ogg" />
             </video>
@@ -25,7 +24,6 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <p className="text-white text-lg mb-4">Experience raw energy and spontaneous humor in this live improv showcase.</p>
           <div className="flex justify-center w-full">
             <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md border-4 border-red-400" poster="/images/posters/event2.jpg">
-            <source src="/videos/promovid2.webm" type="video/webm" />
               <source src="/videos/promovid2.mp4" type="video/mp4" />
               <source src="/videos/promovid2.ogv" type="video/ogg" />
             </video>
