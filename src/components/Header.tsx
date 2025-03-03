@@ -31,8 +31,10 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <UserIcon className="h-6 w-6" />
               <span className="hidden sm:inline">About Me</span>
-              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
-                activeSection === 'about' ? '!w-full' : 'w-0 group-hover:w-full'
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-[width] duration-300 ease-out ${
+                activeSection === 'about' 
+                  ? '!w-full' 
+                  : 'w-0 group-hover:w-full'
               }`}></div>
             </button>
           </li>
@@ -43,8 +45,10 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <VideoCameraIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Some Clips</span>
-              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
-                activeSection === 'clips' ? '!w-full' : 'w-0 group-hover:w-full'
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-[width] duration-300 ease-out ${
+                activeSection === 'clips' 
+                  ? '!w-full' 
+                  : 'w-0 group-hover:w-full'
               }`}></div>
             </button>
           </li>
@@ -55,9 +59,11 @@ const Header = ({ aboutRef, clipsRef, eventsRef, activeSection }: {
             >
               <CalendarIcon className="h-6 w-6" />
               <span className="hidden sm:inline">Upcoming Events</span>
-              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-all duration-300 ${
-                activeSection === 'events' ? '!w-full' : 'w-0 group-hover:w-full'
-              }`}></div>
+              <div className={`absolute -bottom-1 left-0 h-1 bg-red-500 transition-[width] duration-300 ease-out ${
+                  activeSection === 'events' 
+                    ? '!w-full' 
+                    : 'w-0 group-hover:w-full'
+                }`}></div>
             </button>
           </li>
         </ul>

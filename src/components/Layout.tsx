@@ -18,21 +18,25 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      let mostVisibleEntry: IntersectionObserverEntry | null = null;
-      
       entries.forEach(entry => {
-        if (entry.isIntersecting && (!mostVisibleEntry || entry.intersectionRatio > mostVisibleEntry.intersectionRatio)) {
-          mostVisibleEntry = entry;
+        // Calculate visible percentage of the section
+        const visibleRatio = entry.intersectionRatio;
+        const sectionTop = entry.boundingClientRect.top;
+        const sectionHeight = entry.boundingClientRect.height;
+        
+        // Active when at least 40% of section is visible
+        if (visibleRatio >= 0.4 || 
+            (sectionTop <= window.innerHeight * 0.4 && 
+             sectionTop >= -sectionHeight * 0.4)) {
+          setActiveSection(entry.target.id);
         }
       });
-  
-      if (mostVisibleEntry?.isIntersecting) {
-        setActiveSection(mostVisibleEntry.target.id);
-      }
     }, { 
-      threshold: [0.25, 0.5, 0.75],
-      rootMargin: '-25% 0px -55% 0px'
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+      rootMargin: '-25% 0px -25% 0px'
     });
+  
+  
 
     const refs = [
       { ref: aboutRef, id: 'about' },
