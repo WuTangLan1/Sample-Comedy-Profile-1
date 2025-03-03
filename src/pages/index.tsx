@@ -17,7 +17,7 @@ const Home = () => {
         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
           <div className="flex items-center space-x-4">
             <img src="/images/profile_photos/profile5.png" alt="Profile" className="w-12 h-12 rounded-full border-2 border-white" />
-            <div className="text-3xl font-bold font-[PlayfairDisplay] text-white">ComedySite</div>
+            <div className="text-3xl font-bold font-[PlayfairDisplay] text-white">Comedian Name</div>
           </div>
           <ul className="flex space-x-6">
             <li>
