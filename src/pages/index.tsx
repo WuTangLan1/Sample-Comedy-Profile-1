@@ -14,7 +14,10 @@ const Home = () => {
     <div className="scroll-smooth">
       <header className="fixed top-0 w-full backdrop-filter backdrop-blur-lg bg-black/30 shadow-lg z-50">
         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-          <div className="text-3xl font-bold font-[PlayfairDisplay] text-white">ComedySite</div>
+          <div className="flex items-center space-x-4">
+            <img src="/images/profile_photos/profile5.png" alt="Profile" className="w-12 h-12 rounded-full border-2 border-white" />
+            <div className="text-3xl font-bold font-[PlayfairDisplay] text-white">ComedySite</div>
+          </div>
           <ul className="flex space-x-6">
             <li>
               <button onClick={() => scrollToSection(aboutRef)} className="text-lg font-medium text-white transition duration-300 focus:outline-none">
