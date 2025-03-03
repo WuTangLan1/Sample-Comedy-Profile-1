@@ -62,9 +62,9 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/event_photos/event1.png" alt="Event 1" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
-        <div className="w-full md:w-1/2 p-4 text-white">
-          <h3 className="text-4xl font-bold font-[PlayfairDisplay] mb-4">My Journey to Comedy</h3>
-          <p className="text-xl">
+        <div className="w-full md:w-1/2 p-4 text-white bg-[url('/images/text-backgrounds/bg1.webp')] bg-cover bg-center bg-no-repeat">
+          <h3 className="text-4xl font-bold font-[PlayfairDisplay] mb-4 pl-8 pr-8">My Journey to Comedy</h3>
+          <p className="text-xl p-4 rounded-md shadow-md pl-8 pr-8">
             Growing up in a small town, I discovered humor in the simplest moments. The road to comedy has been a mosaic of challenges, personal triumphs, and countless open mic nights that pushed me beyond my comfort zone. Every stage I have graced has contributed to my growth, shaping my unique voice and fueling my commitment to authenticity.
           </p>
         </div>
