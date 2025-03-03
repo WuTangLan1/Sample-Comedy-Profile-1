@@ -10,7 +10,7 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white border-b-4 border-red-400">Event 1: Comedic Extravaganza</h2>
           <p className="text-white text-lg mb-4">An unforgettable night filled with laughter and unexpected twists.</p>
           <div className="flex justify-center w-full">
-            <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md border-4 border-white" poster="/images/posters/event1.jpg">
+            <video preload="metadata" controls className="w-full max-w-lg max-h-[290px] rounded-xl shadow-md border-4 border-white" poster="/images/event_photos/event4.png">
               <source src="/videos/promovid1.mp4" type="video/mp4" />
               <source src="/videos/promovid1.ogv" type="video/ogg" />
             </video>
@@ -23,7 +23,7 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white border-b-4 border-white">Event 2: Live Improv Night</h2>
           <p className="text-white text-lg mb-4">Experience raw energy and spontaneous humor in this live improv showcase.</p>
           <div className="flex justify-center w-full">
-            <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md border-4 border-red-400" poster="/images/posters/event2.jpg">
+            <video preload="metadata" controls className="w-full max-h-[290px] max-w-lg rounded-xl shadow-md border-4 border-red-400" poster="/images/event_photos/event5.png">
               <source src="/videos/promovid2.mp4" type="video/mp4" />
               <source src="/videos/promovid2.ogv" type="video/ogg" />
             </video>
