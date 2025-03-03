@@ -10,8 +10,10 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white">Event 1: Comedic Extravaganza</h2>
           <p className="text-white text-lg mb-4">An unforgettable night filled with laughter and unexpected twists.</p>
           <div className="flex justify-center w-full">
-            <video preload="auto" controls className="w-full max-w-lg rounded-xl shadow-md" poster="/images/posters/event1.jpg">
+            <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md" poster="/images/posters/event1.jpg">
+              <source src="/videos/promovid1.webm" type="video/webm" />
               <source src="/videos/promovid1.mp4" type="video/mp4" />
+              <source src="/videos/promovid1.ogv" type="video/ogg" />
             </video>
           </div>
           <p className="text-white text-base mt-4">The set for this performance was meticulously designed to capture the vibrant energy of the evening, complementing the clip above with dynamic lighting and creative backdrops that enhanced every punchline.</p>
@@ -22,8 +24,10 @@ const ClipsSection = forwardRef<HTMLElement>((_, ref) => {
           <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white">Event 2: Live Improv Night</h2>
           <p className="text-white text-lg mb-4">Experience raw energy and spontaneous humor in this live improv showcase.</p>
           <div className="flex justify-center w-full">
-            <video preload="auto" controls className="w-full max-w-lg rounded-xl shadow-md" poster="/images/posters/event2.jpg">
+            <video preload="metadata" controls className="w-full max-w-lg rounded-xl shadow-md" poster="/images/posters/event2.jpg">
+            <source src="/videos/promovid2.webm" type="video/webm" />
               <source src="/videos/promovid2.mp4" type="video/mp4" />
+              <source src="/videos/promovid2.ogv" type="video/ogg" />
             </video>
           </div>
           <p className="text-white text-base mt-4">The set for this performance was crafted with an emphasis on spontaneity, featuring innovative design elements that echoed the improvisational spirit and elevated the humor showcased in the clip above.</p>
