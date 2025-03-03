@@ -60,7 +60,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4 text-center md:text-left">
           <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-4 text-white">About Me</h2>
           <p className="text-xl font-medium text-white">
-            I am an emerging comedian passionate about bringing laughter wherever I go. From intimate gigs to large events, I strive to create moments that connect and inspire joy.
+            Ever since I was a child, I have been captivated by the magic of performance and the transformative power of laughter. My journey began with a deep-rooted passion for storytelling, and over the years, I have dedicated myself to honing my craft, connecting with audiences on a profound and personal level.
           </p>
         </div>
       </motion.div>
@@ -71,7 +71,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4 text-white">
           <h3 className="text-4xl font-bold font-[PlayfairDisplay] mb-4">My Journey to Comedy</h3>
           <p className="text-xl">
-            From humble beginnings and personal challenges to discovering the power of humor, my journey has been filled with moments of growth and inspiration that shaped my comedic voice.
+            Growing up in a small town, I discovered humor in the simplest moments. The road to comedy has been a mosaic of challenges, personal triumphs, and countless open mic nights that pushed me beyond my comfort zone. Every stage I have graced has contributed to my growth, shaping my unique voice and fueling my commitment to authenticity.
           </p>
         </div>
       </motion.div>
@@ -82,7 +82,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4 text-white">
           <h3 className="text-4xl font-bold font-[PlayfairDisplay] mb-4">What Comedy is Like</h3>
           <p className="text-xl">
-            Comedy is a celebration of life’s absurdities. It is unpredictable, deeply personal, and an art that transforms everyday moments into memorable experiences.
+            Comedy is more than just a series of jokes—it's a way of life that transforms pain into art and struggles into shared moments of joy. It’s a raw, honest conversation where every laugh builds a bridge of connection, turning everyday challenges into sources of inspiration and resilience.
           </p>
         </div>
       </motion.div>
@@ -93,7 +93,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4 text-white">
           <h3 className="text-4xl font-bold font-[PlayfairDisplay] mb-4">Why I Am a Comedian</h3>
           <p className="text-xl">
-            My passion for comedy stems from a desire to heal, inspire, and unite. Every laugh is a victory, and every performance is a step toward a brighter, more joyful world.
+            My choice to embrace comedy stems from a deep, personal belief in the healing power of laughter. Every performance is an opportunity to break down barriers, foster genuine connections, and bring light into dark places. I pour my heart into every act, determined to create a community where vulnerability is celebrated and every laugh echoes a shared human experience.
           </p>
         </div>
       </motion.div>
