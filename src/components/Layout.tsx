@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="scroll-smooth">
       <Header aboutRef={aboutRef} clipsRef={clipsRef} eventsRef={eventsRef} />
-      <main className="pt-24">
+      <main className="pt-20">
         {children({ aboutRef, clipsRef, eventsRef })}
       </main>
     </div>
