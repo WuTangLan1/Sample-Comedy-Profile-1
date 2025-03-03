@@ -1,6 +1,6 @@
 // src/pages/index.tsx
 import { useRef } from "react";
-import { UserIcon, VideoCameraIcon, CalendarIcon } from "@heroicons/react/outline";
+import { UserIcon, VideoCameraIcon, CalendarIcon } from "@heroicons/react/24/outline";
 import AboutSection from "../components/AboutSection";
 import ClipsSection from "../components/ClipsSection";
 import EventsSection from "../components/EventsSection";
@@ -50,3 +50,4 @@ const Home = () => {
   );
 };
 export default Home;
+
