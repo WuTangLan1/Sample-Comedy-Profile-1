@@ -84,7 +84,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         <div className="w-full md:w-1/2 p-4">
           <AnimatedImage src="/images/profile_photos/profile1.png" alt="Profile" className="w-full h-auto rounded-lg shadow-lg" />
         </div>
-        <div className="w-full md:w-1/2 p-4 text-white bg-[url('/images/text-backgrounds/bg1.webp')] bg-cover bg-center bg-no-repeat">
+        <div className="w-full md:w-1/2 p-4 text-white bg-[url('/images/text-backgrounds/bg3.webp')] bg-cover bg-center bg-no-repeat">
           <h3 className="text-4xl font-bold font-[PlayfairDisplay] pl-8 pr-8 mb-4">Why I Am a Comedian</h3>
           <p className="text-xl pl-8 pr-8">
             My choice to embrace comedy stems from a deep, personal belief in the healing power of laughter. Every performance is an opportunity to break down barriers, foster genuine connections, and bring light into dark places. I pour my heart into every act, determined to create a community where vulnerability is celebrated and every laugh echoes a shared human experience.
