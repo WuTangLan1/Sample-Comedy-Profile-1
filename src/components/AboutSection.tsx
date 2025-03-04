@@ -1,6 +1,6 @@
 // src/components/AboutSection.tsx
-import { forwardRef, useRef, useEffect, useState } from "react";
-import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion";
+import { forwardRef, useRef, useEffect } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 import AboutMe from "./AboutMe/AboutMe";
 interface AnimatedImageProps {
   src: string;
@@ -75,8 +75,8 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         </div>
         <div className="w-full md:w-1/2 p-4 text-white bg-[url('/images/text-backgrounds/bg2.webp')] bg-cover bg-center bg-no-repeat">
           <h3 className="text-4xl font-bold font-[PlayfairDisplay] pl-8 pr-8 mb-4">What Comedy is Like</h3>
-          <p className="text-xl pl-8 pr-8">
-            Comedy is more than just a series of jokes—it's a way of life that transforms pain into art and struggles into shared moments of joy. It’s a raw, honest conversation where every laugh builds a bridge of connection, turning everyday challenges into sources of inspiration and resilience.
+           <p className="text-xl pl-8 pr-8">
+            Comedy is more than just a series of jokes—it&apos;s a way of life that transforms pain into art and struggles into shared moments of joy. It&apos;s a raw, honest conversation where every laugh builds a bridge of connection, turning everyday challenges into sources of inspiration and resilience.
           </p>
         </div>
       </motion.div>
