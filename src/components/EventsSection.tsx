@@ -1,6 +1,7 @@
 // src\components\EventsSection.tsx
 
 import { forwardRef } from "react";
+import Image from 'next/image';
 
 interface Event {
   title: string;
@@ -41,7 +42,13 @@ const eventItems: Event[] = [
 const EventItem: React.FC<{ event: Event }> = ({ event }) => {
   return (
     <div className="bg-black/40 p-6 rounded-xl shadow-lg flex flex-col">
-      <img src={event.image} alt={event.title} className="w-full h-48 object-cover rounded-lg shadow-md mb-4" />
+    <Image
+      src={event.image}
+      alt={event.title}
+      width={400} 
+      height={192} 
+      className="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+    />
       <div className="flex flex-col items-center text-white">
         <h3 className="text-2xl md:text-3xl font-bold font-[PlayfairDisplay] mb-2">{event.title}</h3>
         <p className="text-lg md:text-xl">Date: {event.date}</p>

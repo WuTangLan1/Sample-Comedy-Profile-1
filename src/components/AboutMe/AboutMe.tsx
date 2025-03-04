@@ -1,5 +1,6 @@
 // src/components/AboutMe/AboutMe.tsx
 import { motion } from "framer-motion";
+import Image from 'next/image';
 const AboutMe = () => {
   return (
     <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }} className="relative w-full max-w-4xl mx-auto px-4 mb-16 z-10">
@@ -11,7 +12,13 @@ const AboutMe = () => {
           </p>
         </motion.div>
         <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }} className="flex-shrink-0">
-          <img src="/images/profile_photos/profile5.png" alt="Profile" className="w-72 h-72 object-cover rounded-full border-4 border-white shadow-xl" />
+         <Image
+            src="/images/profile_photos/profile5.png"
+            alt="Profile"
+            width={288}
+            height={288}
+            className="rounded-full border-4 border-white shadow-xl"
+          />
         </motion.div>
       </div>
     </motion.div>
