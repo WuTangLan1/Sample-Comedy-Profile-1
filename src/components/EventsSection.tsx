@@ -47,8 +47,8 @@ const EventItem: React.FC<{ event: Event }> = ({ event }) => {
         <p className="text-lg md:text-xl">Date: {event.date}</p>
         <p className="text-lg md:text-xl mb-3">Location: {event.location}</p>
         <div className="flex space-x-4">
-          <a href={event.website} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Website</a>
-          <a href={event.tickets} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Tickets</a>
+          <a className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Website</a>
+          <a className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Tickets</a>
         </div>
       </div>
     </div>
