@@ -16,43 +16,35 @@ const Layout = ({ children }: LayoutProps) => {
   const eventsRef = useRef<HTMLElement | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // Calculate visible percentage of the section
-        const visibleRatio = entry.intersectionRatio;
-        const sectionTop = entry.boundingClientRect.top;
-        const sectionHeight = entry.boundingClientRect.height;
-        
-        // Active when at least 40% of section is visible
-        if (visibleRatio >= 0.4 || 
-            (sectionTop <= window.innerHeight * 0.4 && 
-             sectionTop >= -sectionHeight * 0.4)) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, { 
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-      rootMargin: '-25% 0px -25% 0px'
-    });
-  
-  
-
-    const refs = [
-      { ref: aboutRef, id: 'about' },
-      { ref: clipsRef, id: 'clips' },
-      { ref: eventsRef, id: 'events' }
-    ];
-
-    refs.forEach(({ ref, id }) => {
-      if (ref.current) {
-        ref.current.id = id;
-        observer.observe(ref.current);
+useEffect(() => {
+  const observer = new IntersectionObserver((entries) => {
+    let maxRatio = 0;
+    let currentId: string | null = null;
+    
+    entries.forEach((entry) => {
+      // Track whichever section has the highest visibility
+      if (entry.intersectionRatio > maxRatio) {
+        maxRatio = entry.intersectionRatio;
+        currentId = entry.target.id;
       }
     });
+    
+    // Only set activeSection if a section is at least 20% visible
+    if (currentId && maxRatio >= 0.2) {
+      setActiveSection(currentId);
+    }
+  }, {
+    threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
+    rootMargin: '-25% 0px -25% 0px',
+  });
 
-    return () => observer.disconnect();
-  }, []);
+  [aboutRef, clipsRef, eventsRef].forEach((sectionRef) => {
+    if (sectionRef.current) observer.observe(sectionRef.current);
+  });
+
+  return () => observer.disconnect();
+}, []);
+
 
   return (
     <div className="scroll-smooth">

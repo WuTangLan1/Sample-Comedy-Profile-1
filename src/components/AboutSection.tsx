@@ -9,23 +9,20 @@ interface AnimatedImageProps {
 }
 const imageVariants = {
   hidden: {
-    scale: 0.35,
-    opacity: 0.5,
-    filter: "blur(8px)"
+    scale: 0.85,
+    opacity: 0,
+    filter: "blur(12px)"
   },
   visible: {
-    scale: 0.75,
+    scale: 1,
     opacity: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 0.8,
-      ease: [0.33, 1, 0.68, 1],
-      scale: {
-        type: "spring",
-        stiffness: 150,
-        damping: 20,
-        mass: 0.5
-      }
+      type: "spring",
+      stiffness: 80,
+      damping: 20,
+      mass: 0.5,
+      duration: 0.8
     }
   }
 };
@@ -41,16 +38,16 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) =>
     controls.start(inView ? "visible" : "hidden");
   }, [inView, controls]);
   return (
-    <motion.img
-      ref={ref}
-      src={src}
-      alt={alt}
-      className={className}
-      initial="hidden"
-      animate={controls}
-      variants={imageVariants}
-      exit="hidden"
-    />
+      <motion.img
+        ref={ref}
+        src={src}
+        alt={alt}
+        className={`${className} [will-change:transform,opacity,filter]`}
+        initial="hidden"
+        animate={controls}
+        variants={imageVariants}
+        exit="hidden"
+      />
   );
 };
 const AboutSection = forwardRef<HTMLElement>((_, ref) => {
