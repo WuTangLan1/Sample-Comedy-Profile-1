@@ -27,7 +27,6 @@ const AboutMe = () => {
             years, I have dedicated myself to honing my craft, connecting with
             audiences on a profound and personal level.
           </p>
-          {/* Two centered buttons with impressive 3D hover effects */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +40,7 @@ const AboutMe = () => {
                   block: "start",
                 })
               }
-              className="px-6 py-2 bg-red-500 text-white rounded transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl active:scale-95"
+              className="btn"
             >
               See my Work
             </button>
@@ -52,7 +51,7 @@ const AboutMe = () => {
                   block: "start",
                 })
               }
-              className="px-6 py-2 bg-red-500 text-white rounded transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl active:scale-95"
+              className="btn"
             >
               See me Live
             </button>
