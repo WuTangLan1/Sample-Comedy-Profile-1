@@ -1,5 +1,6 @@
 // src/components/Layout.tsx
-import { ReactNode, useRef, useState, useEffect } from "react";
+import { ReactNode, useRef } from "react";
+import Footer from "./Footer"; 
 
 interface LayoutProps {
   children: (refs: { 
@@ -13,44 +14,15 @@ const Layout = ({ children }: LayoutProps) => {
   const aboutRef = useRef<HTMLElement | null>(null);
   const clipsRef = useRef<HTMLElement | null>(null);
   const eventsRef = useRef<HTMLElement | null>(null);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
-useEffect(() => {
-  const observer = new IntersectionObserver((entries) => {
-    let maxRatio = 0;
-    let currentId: string | null = null;
-    
-    entries.forEach((entry) => {
-      // Track whichever section has the highest visibility
-      if (entry.intersectionRatio > maxRatio) {
-        maxRatio = entry.intersectionRatio;
-        currentId = entry.target.id;
-      }
-    });
-    
-    // Only set activeSection if a section is at least 20% visible
-    if (currentId && maxRatio >= 0.2) {
-      setActiveSection(currentId);
-    }
-  }, {
-    threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
-    rootMargin: '-25% 0px -25% 0px',
-  });
-
-  [aboutRef, clipsRef, eventsRef].forEach((sectionRef) => {
-    if (sectionRef.current) observer.observe(sectionRef.current);
-  });
-
-  return () => observer.disconnect();
-}, []);
 
 
   return (
-    <div className="scroll-smooth">
-      <main>
-        {children({ aboutRef, clipsRef, eventsRef })}
-      </main>
-    </div>
+    <div className="scroll-smooth flex flex-col min-h-screen">
+    <main className="flex-grow">
+      {children({ aboutRef, clipsRef, eventsRef })}
+    </main>
+    <Footer />
+  </div>
   );
 };
 
