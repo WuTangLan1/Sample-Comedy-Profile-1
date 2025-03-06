@@ -21,9 +21,13 @@ const AboutMe = () => {
             About Me
           </h2>
           <p className="text-xl font-medium text-white leading-relaxed">
-            Ever since I was a child, I have been captivated by the magic of performance and the transformative power of laughter. My journey began with a deep-rooted passion for storytelling, and over the years, I have dedicated myself to honing my craft, connecting with audiences on a profound and personal level.
+            Ever since I was a child, I have been captivated by the magic of
+            performance and the transformative power of laughter. My journey
+            began with a deep-rooted passion for storytelling, and over the
+            years, I have dedicated myself to honing my craft, connecting with
+            audiences on a profound and personal level.
           </p>
-          {/* Two centered buttons */}
+          {/* Two centered buttons with impressive 3D hover effects */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,10 +38,10 @@ const AboutMe = () => {
               onClick={() =>
                 document.getElementById("clips")?.scrollIntoView({
                   behavior: "smooth",
-                  block: "start"
+                  block: "start",
                 })
               }
-              className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              className="px-6 py-2 bg-red-500 text-white rounded transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl active:scale-95"
             >
               See my Work
             </button>
@@ -45,10 +49,10 @@ const AboutMe = () => {
               onClick={() =>
                 document.getElementById("events")?.scrollIntoView({
                   behavior: "smooth",
-                  block: "start"
+                  block: "start",
                 })
               }
-              className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              className="px-6 py-2 bg-red-500 text-white rounded transition transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl active:scale-95"
             >
               See me Live
             </button>
