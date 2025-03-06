@@ -1,7 +1,6 @@
-// src\components\EventsSection.tsx
-
+// src/components/EventsSection.tsx
 import { forwardRef } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 interface Event {
   title: string;
@@ -42,20 +41,36 @@ const eventItems: Event[] = [
 const EventItem: React.FC<{ event: Event }> = ({ event }) => {
   return (
     <div className="bg-black/40 p-6 rounded-xl shadow-lg flex flex-col">
-    <Image
-      src={event.image}
-      alt={event.title}
-      width={400} 
-      height={192} 
-      className="w-full h-48 object-cover rounded-lg shadow-md mb-4"
-    />
+      <Image
+        src={event.image}
+        alt={event.title}
+        width={400}
+        height={192}
+        className="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+      />
       <div className="flex flex-col items-center text-white">
-        <h3 className="text-2xl md:text-3xl font-bold font-[PlayfairDisplay] mb-2">{event.title}</h3>
+        <h3 className="text-2xl md:text-3xl font-bold font-[PlayfairDisplay] mb-2">
+          {event.title}
+        </h3>
         <p className="text-lg md:text-xl">Date: {event.date}</p>
         <p className="text-lg md:text-xl mb-3">Location: {event.location}</p>
         <div className="flex space-x-4">
-          <a className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Website</a>
-          <a className="px-4 py-2 bg-white text-black font-bold rounded transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-gray-200">Tickets</a>
+          <a
+            href={event.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
+            Website
+          </a>
+          <a
+            href={event.tickets}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
+            Tickets
+          </a>
         </div>
       </div>
     </div>
@@ -64,10 +79,16 @@ const EventItem: React.FC<{ event: Event }> = ({ event }) => {
 
 const EventsSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section ref={ref} id="events" className="min-h-screen relative flex flex-col items-center justify-center bg-black bg-[url('/images/backgrounds/eventsbg.svg')] bg-cover bg-center py-12">
+    <section
+      ref={ref}
+      id="events"
+      className="min-h-screen relative flex flex-col items-center justify-center bg-black bg-[url('/images/backgrounds/eventsbg.svg')] bg-cover bg-center py-12"
+    >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative container mx-auto p-8 text-center bg-black/50 rounded-xl shadow-2xl max-w-full">
-        <h2 className="text-4xl md:text-5xl font-bold font-[PlayfairDisplay] mb-8 text-white">Upcoming Events</h2>
+        <h2 className="text-4xl md:text-5xl font-bold font-[PlayfairDisplay] mb-8 text-white">
+          Upcoming Events
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {eventItems.map((event, index) => (
             <EventItem key={index} event={event} />
