@@ -16,7 +16,7 @@ const AboutMe = () => {
   }, [modalOpen]);
   
   const isFormValid = name.trim() !== "" && email.trim() !== "" && date.trim() !== "" && showName.trim() !== "" && message.trim() !== "";
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setModalOpen(false);
     setName("");
@@ -25,6 +25,7 @@ const AboutMe = () => {
     setShowName("");
     setMessage("");
   };
+  
   return (
     <>
       <motion.div
