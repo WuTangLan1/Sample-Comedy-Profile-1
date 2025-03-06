@@ -1,6 +1,5 @@
 // src/components/Layout.tsx
 import { ReactNode, useRef, useState, useEffect } from "react";
-import Header from "./Header";
 
 interface LayoutProps {
   children: (refs: { 
@@ -48,13 +47,7 @@ useEffect(() => {
 
   return (
     <div className="scroll-smooth">
-      <Header 
-        aboutRef={aboutRef} 
-        clipsRef={clipsRef} 
-        eventsRef={eventsRef} 
-        activeSection={activeSection} 
-      />
-      <main className="pt-20">
+      <main>
         {children({ aboutRef, clipsRef, eventsRef })}
       </main>
     </div>
