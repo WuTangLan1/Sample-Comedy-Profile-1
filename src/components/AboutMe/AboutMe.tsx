@@ -55,7 +55,7 @@ const AboutMe = () => {
             className="order-2 md:order-1 flex-1 text-center md:text-left"
           >
             <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-6 text-white">
-              About Me
+              Citizen Kane
             </h2>
             <p className="text-xl font-medium text-white leading-relaxed">
               Ever since I was a child, I have been captivated by the magic of performance and the transformative power of laughter. My journey began with a deep-rooted passion for storytelling, and over the years, I have dedicated myself to honing my craft, connecting with audiences on a profound and personal level.
