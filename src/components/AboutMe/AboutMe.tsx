@@ -1,7 +1,4 @@
-// src/components/AboutMe/AboutMe.tsx
-
-
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -10,14 +7,16 @@ const AboutMe = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [showName, setShowName] = useState("");
   const [message, setMessage] = useState("");
-  const isFormValid = name.trim() !== "" && email.trim() !== "" && date.trim() !== "" && message.trim() !== "";
+  const isFormValid = name.trim() !== "" && email.trim() !== "" && date.trim() !== "" && showName.trim() !== "" && message.trim() !== "";
   const handleSubmit = (e) => {
     e.preventDefault();
     setModalOpen(false);
     setName("");
     setEmail("");
     setDate("");
+    setShowName("");
     setMessage("");
   };
   return (
@@ -93,49 +92,70 @@ const AboutMe = () => {
           </motion.div>
         </div>
       </motion.div>
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-12">
-          <div className="bg-gray-900 text-white rounded-lg shadow-xl w-11/12 max-w-lg p-8">
-            <h3 className="text-2xl font-bold mb-4 text-center">Book a Comedian</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="date"
-                placeholder="Event Date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <textarea
-                placeholder="Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                disabled={!isFormValid}
-                className={`btn w-full ${!isFormValid ? "opacity-50 cursor-not-allowed" : ""}`}
-              >
-                Submit
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -50, scale: 0.8 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
+            className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-12"
+          >
+            <motion.div
+              className="relative bg-gray-900 text-white rounded-lg shadow-xl w-11/12 max-w-lg p-8"
+              transition={{ duration: 0.5 }}
+            >
+              <button type="button" onClick={() => setModalOpen(false)} className="absolute top-4 right-4 text-white text-xl font-bold">
+                ×
               </button>
-            </form>
-          </div>
-        </div>
-      )}
+              <h3 className="text-2xl font-bold mb-4 text-center">Book a Comedian</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="date"
+                  placeholder="Event Date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Show Name"
+                  value={showName}
+                  onChange={(e) => setShowName(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <textarea
+                  placeholder="Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-700 bg-gray-800 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  type="submit"
+                  disabled={!isFormValid}
+                  className={`btn w-full ${!isFormValid ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                  Submit
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
