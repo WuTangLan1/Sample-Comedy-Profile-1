@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AboutMe = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -9,6 +9,12 @@ const AboutMe = () => {
   const [date, setDate] = useState("");
   const [showName, setShowName] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    document.body.style.overflow = modalOpen ? "hidden" : "auto";
+    return () => { document.body.style.overflow = "auto"; };
+  }, [modalOpen]);
+  
   const isFormValid = name.trim() !== "" && email.trim() !== "" && date.trim() !== "" && showName.trim() !== "" && message.trim() !== "";
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,10 +35,24 @@ const AboutMe = () => {
       >
         <div className="bg-black/30 rounded-xl shadow-2xl backdrop-blur-lg p-8 flex flex-col md:flex-row items-center gap-8">
           <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            className="order-1 md:order-2 flex-shrink-0"
+          >
+            <Image
+              src="/images/profile_photos/profile5.png"
+              alt="Profile"
+              width={288}
+              height={288}
+              className="rounded-full border-4 border-white shadow-xl"
+            />
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 text-center md:text-left"
+            className="order-2 md:order-1 flex-1 text-center md:text-left"
           >
             <h2 className="text-5xl font-bold font-[PlayfairDisplay] mb-6 text-white">
               About Me
@@ -76,38 +96,25 @@ const AboutMe = () => {
               </button>
             </motion.div>
           </motion.div>
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-            className="flex-shrink-0"
-          >
-            <Image
-              src="/images/profile_photos/profile5.png"
-              alt="Profile"
-              width={288}
-              height={288}
-              className="rounded-full border-4 border-white shadow-xl"
-            />
-          </motion.div>
         </div>
       </motion.div>
       <AnimatePresence>
         {modalOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -50, scale: 0.8 }}
-            transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-12"
-          >
-            <motion.div
-              className="relative bg-gray-900 text-white rounded-lg shadow-xl w-11/12 max-w-lg p-8"
-              transition={{ duration: 0.5 }}
+         <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 max-w-screen max-h-screen"
+        >
+          <motion.div className="bg-gray-900 text-white rounded-lg shadow-xl w-11/12 max-w-lg p-8">
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              className="absolute top-4 right-4 text-white text-xl font-bold"
             >
-              <button type="button" onClick={() => setModalOpen(false)} className="absolute top-4 right-4 text-white text-xl font-bold">
-                ×
-              </button>
+              ×
+            </button>
               <h3 className="text-2xl font-bold mb-4 text-center">Book a Comedian</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
